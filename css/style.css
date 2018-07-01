@@ -42,12 +42,17 @@ q:before, q:after {
     content:none;
 }
 
+#footer1 {
+    text-decoration: none;
+}
+
 a {
     margin:0;
     padding:0;
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
+    text-decoration: none;
 }
 
 /* change colours to suit your needs */
@@ -58,26 +63,6 @@ ins {
 }
 
 /* change colours to suit your needs */
-mark {
-    background-color:#ff9;
-    color:#000; 
-    font-style:italic;
-    font-weight:bold;
-}
-
-del {
-    text-decoration: line-through;
-}
-
-abbr[title], dfn[title] {
-    border-bottom:1px dotted;
-    cursor:help;
-}
-
-table {
-    border-collapse:collapse;
-    border-spacing:0;
-}
 
 /* change border colour to suit your needs */
 
@@ -194,15 +179,15 @@ a{
 
 
 
-@media only screen and (max-width: 345px ) and (orientation: portrait) {
+@media only screen and (max-width: 767px ) and (orientation: portrait) {
 
     .conv-border {
-    height:280px;
+    height:450px;
 }
 
 #cells-div {
     border-left: 4px solid red;
-    height: 200px;
+    height: 380px;
     padding: 3px;
 }
 
