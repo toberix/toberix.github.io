@@ -1,5 +1,5 @@
-const currencyCacheName = 'currency';
-const cacheName = 'currencyConverter-static';
+const cachedCurrencyName = 'currency';
+const nameOfcached = 'currencyConverter-static';
 const filesToCache = [
     '/',
     '/index.html',
@@ -15,8 +15,8 @@ const filesToCache = [
 self.addEventListener('install', (e) => {
     console.log('[ServiceWorker] Install');
     e.waitUntil(
-        caches.open(cacheName).then((cache) => {
-            console.log('[ServiceWorker] Caching app shell');
+        caches.open(nameOfcached).then((cache) => {
+            console.log('[ServiceWorker] Caching');
             return cache.addAll(filesToCache);
         })
     );
@@ -27,8 +27,8 @@ self.addEventListener('activate', (e) => {
     e.waitUntil(
         caches.keys().then((keyList) => {
             return Promise.all(keyList.map((key) => {
-                if (key !== cacheName && key !== currencyCacheName) {
-                    console.log('[ServiceWorker] Removing old cache', key);
+                if (key !== nameOfcached && key !== cachedCurrencyName) {
+                    console.log('[ServiceWorker] expunging outdated caches ', key);
                     return caches.delete(key);
                 }
             }));
@@ -42,7 +42,7 @@ self.addEventListener('fetch', (e) => {
     const baseURL = 'https://free.currencyconverterapi.com/api/v5/currencies';
     if (e.request.url.indexOf(baseURL) > -1) {
         e.respondWith(
-            caches.open(currencyCacheName).then((cache) => {
+            caches.open(cachedCurrencyName).then((cache) => {
                 return fetch(e.request).then((response) => {
                     cache.put(e.request.url, response.clone());
                     return response;
