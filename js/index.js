@@ -118,7 +118,7 @@ view_connector.populateCountries = (json) =>{
 
 
      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('index.js').then(function () {
+        navigator.serviceWorker.register('js/serviceworker.js').then(function () {
             console.log('Service Worker Registered');
             if (!navigator.serviceWorker.controller) {
                 return;
